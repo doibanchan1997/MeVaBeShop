@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MeVaBeShop.Model.Models
 {
-    class MeVaBeShopDbContext : DbContext
+    public class MeVaBeShopDbContext : DbContext
     {
         public MeVaBeShopDbContext() :base("MeVaBeShopConnectionString")
         {
