@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MeVaBeShop.Data.Repositories
 {
-    public interface ISliderRepository
+    public interface ISliderRepository : IRepository<Slider>
     {
 
     }

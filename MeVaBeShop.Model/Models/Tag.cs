@@ -10,8 +10,9 @@ namespace MeVaBeShop.Model.Models
     public class Tag
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TagID { get; set; }
+        [MaxLength(50)]
+        [Column(TypeName ="varchar")]
+        public string TagID { get; set; }
 
 
         [StringLength(50)]

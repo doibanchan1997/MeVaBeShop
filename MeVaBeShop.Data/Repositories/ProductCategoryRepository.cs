@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MeVaBeShop.Data.Repositories
 {
-    public interface IProductCategoryRepository
+    public interface IProductCategoryRepository : IRepository<ProductCategory>
     {
-        ICollection<ProductCategory> GetByAlias(string alias);
+       
     }
-    public class ProductCategoryRepository : RepositoryBase<ProductCategory>
+    public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
     {
        
         public ProductCategoryRepository(IDbFactory dbFactory)
@@ -20,5 +20,7 @@ namespace MeVaBeShop.Data.Repositories
         {
 
         }
+
+        
     }
 }

@@ -178,7 +178,7 @@ namespace MeVaBeShop.Data.Migrations
                 "dbo.ProductTags",
                 c => new
                     {
-                        TagID = c.Int(nullable: false),
+                        TagID = c.String(nullable: false, maxLength: 50, unicode: false),
                         ProductID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TagID, t.ProductID })
@@ -191,7 +191,7 @@ namespace MeVaBeShop.Data.Migrations
                 "dbo.Tags",
                 c => new
                     {
-                        TagID = c.Int(nullable: false, identity: true),
+                        TagID = c.String(nullable: false, maxLength: 50, unicode: false),
                         TagName = c.String(maxLength: 50),
                         Type = c.String(maxLength: 50, unicode: false),
                     })
@@ -201,7 +201,7 @@ namespace MeVaBeShop.Data.Migrations
                 "dbo.PostTags",
                 c => new
                     {
-                        TagID = c.Int(nullable: false),
+                        TagID = c.String(nullable: false, maxLength: 50, unicode: false),
                         PostID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.TagID, t.PostID })

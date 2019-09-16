@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostCategoryService.cs" />
+    <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeVaBeShop.Data\MeVaBeShop.Data.csproj">
+      <Project>{E3EC50DC-D6E2-4382-A034-427C6EA45876}</Project>
+      <Name>MeVaBeShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MeVaBeShop.Model\MeVaBeShop.Model.csproj">
+      <Project>{EE1B4A4F-E146-4792-B05E-1355B17444E7}</Project>
+      <Name>MeVaBeShop.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

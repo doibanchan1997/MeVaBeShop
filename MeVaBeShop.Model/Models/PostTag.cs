@@ -10,8 +10,9 @@ namespace MeVaBeShop.Model.Models
     public class PostTag
     {
         [Key]
-        [Column(Order = 1)]
-        public int TagID { get; set; }
+        [Column(Order = 1, TypeName = "varchar")]
+        [StringLength (50)]
+        public string TagID { get; set; }
 
         [Key]
         [Column(Order = 2)]
