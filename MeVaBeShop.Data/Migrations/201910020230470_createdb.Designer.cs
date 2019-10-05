@@ -13,7 +13,7 @@ namespace MeVaBeShop.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909131729253_createdb"; }
+            get { return "201910020230470_createdb"; }
         }
         
         string IMigrationMetadata.Source

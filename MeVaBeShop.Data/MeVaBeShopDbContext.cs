@@ -10,12 +10,13 @@ namespace MeVaBeShop.Data
 {
     public class MeVaBeShopDbContext : DbContext
     {
-        public MeVaBeShopDbContext() :base("MeVaBeShopConnectionString")
+        public MeVaBeShopDbContext() :base("MeVaBeShopConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Error> Errors { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Footer> Footers { get; set; }
         public DbSet<Menu> Menus { get; set; }
@@ -24,10 +25,10 @@ namespace MeVaBeShop.Data
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostCategory> PostCategorys { get; set; }
+        public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductCategory> ProductCategorys { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SupportOnline> SupportOnlines { get; set; }
@@ -35,7 +36,7 @@ namespace MeVaBeShop.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder builder)
         {
             
         }

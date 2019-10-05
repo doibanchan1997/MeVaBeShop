@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MeVaBeShop.Data
+namespace MeVaBeShop.Data.Infrastructure
 {
     public class Disposable : IDisposable
     {
         private bool isDisposed;
+
         ~Disposable()
         {
             Dispose(false);
@@ -19,19 +20,19 @@ namespace MeVaBeShop.Data
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         private void Dispose(bool disposing)
         {
             if (!isDisposed && disposing)
             {
                 DisposeCore();
             }
+
             isDisposed = true;
         }
 
-        protected virtual  void DisposeCore()
+        // Ovveride this to dispose custom objects
+        protected virtual void DisposeCore()
         {
-           
         }
     }
 }

@@ -38,6 +38,17 @@ namespace MeVaBeShop.Data.Migrations
                 .PrimaryKey(t => t.ContactID);
             
             CreateTable(
+                "dbo.Errors",
+                c => new
+                    {
+                        ErrorID = c.Int(nullable: false, identity: true),
+                        Message = c.String(),
+                        StackTrace = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.ErrorID);
+            
+            CreateTable(
                 "dbo.Feedbacks",
                 c => new
                     {
@@ -363,6 +374,7 @@ namespace MeVaBeShop.Data.Migrations
             DropTable("dbo.Menus");
             DropTable("dbo.Footers");
             DropTable("dbo.Feedbacks");
+            DropTable("dbo.Errors");
             DropTable("dbo.Contacts");
             DropTable("dbo.Abouts");
         }

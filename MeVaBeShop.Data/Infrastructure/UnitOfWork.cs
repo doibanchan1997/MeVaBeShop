@@ -10,6 +10,7 @@ namespace MeVaBeShop.Data.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
+
         private MeVaBeShopDbContext dbContext;
 
         public UnitOfWork(IDbFactory dbFactory)

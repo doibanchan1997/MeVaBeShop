@@ -51,11 +51,11 @@
   <ItemGroup>
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuType.cs" />
-    <Compile Include="MeVaBeShopDbContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Page.cs" />
