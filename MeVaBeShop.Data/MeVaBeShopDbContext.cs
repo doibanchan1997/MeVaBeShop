@@ -1,4 +1,5 @@
 ﻿using MeVaBeShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MeVaBeShop.Data
 {
-    public class MeVaBeShopDbContext : DbContext
+    public class MeVaBeShopDbContext : IdentityDbContext
     {
         public MeVaBeShopDbContext() :base("MeVaBeShopConnection")
         {
@@ -36,9 +37,14 @@ namespace MeVaBeShop.Data
         public DbSet<Tag> Tags { get; set; }
         public DbSet<VisitorStatistic> VisitorStatistics { get; set; }
 
+        public static MeVaBeShopDbContext Create()
+        {
+            return new MeVaBeShopDbContext();
+        }
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
 
     }

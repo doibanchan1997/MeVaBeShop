@@ -1,13 +1,15 @@
-﻿using MeVaBeShop.Model.Models;
+﻿using AutoMapper;
+using MeVaBeShop.Model.Models;
 using MeVaBeShop.Service;
 using MeVaBeShop.Web.Infrastructure.Core;
+using MeVaBeShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using MeVaBeShop.Web.Infrastructure.Extensions;
 namespace MeVaBeShop.Web.API
 {
     [RoutePrefix("api/postcategory")]
@@ -28,14 +30,17 @@ namespace MeVaBeShop.Web.API
             {
                 var listCategory = _postCategoryService.GetAll();
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                var ListPostCategorVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, ListPostCategorVm);
 
 
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -46,7 +51,12 @@ namespace MeVaBeShop.Web.API
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+
+                    var category = _postCategoryService.Add(newPostCategory);
+
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
@@ -56,7 +66,8 @@ namespace MeVaBeShop.Web.API
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -67,7 +78,12 @@ namespace MeVaBeShop.Web.API
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.PostCategoryID);
+
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+
+                    _postCategoryService.Update(postCategoryDb);
+
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
